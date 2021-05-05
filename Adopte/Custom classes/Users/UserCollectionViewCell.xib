@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="UserCollectionViewCell" reuseIdentifier="UserCollectionViewCell" id="4vk-wa-hIJ" customClass="UserCollectionViewCell" customModule="Adopte" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="135" height="185"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="135" height="185"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="px8-il-s53">
+                        <rect key="frame" x="0.0" y="0.0" width="135" height="185"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Zn-Uh-w39" customClass="PaddingLabel" customModule="Adopte" customModuleProvider="target">
+                                <rect key="frame" x="8" y="12" width="67" height="18"/>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3as-Xz-Zmv" userLabel="city" customClass="PaddingLabel" customModule="Adopte" customModuleProvider="target">
+                                <rect key="frame" x="9" y="38" width="67" height="18"/>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="l1B-D8-9zV">
+                                <rect key="frame" x="0.0" y="0.0" width="135" height="185"/>
+                            </imageView>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbt-v1-HNa">
+                                <rect key="frame" x="0.0" y="0.0" width="135" height="185"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="showUserProfileVC:" destination="4vk-wa-hIJ" eventType="touchUpInside" id="XR7-P7-4YM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="l1B-D8-9zV" secondAttribute="trailing" id="2Z5-KJ-Esk"/>
+                            <constraint firstAttribute="bottom" secondItem="dbt-v1-HNa" secondAttribute="bottom" id="9lI-sE-0aw"/>
+                            <constraint firstItem="3as-Xz-Zmv" firstAttribute="leading" secondItem="6Zn-Uh-w39" secondAttribute="leading" constant="1" id="FOe-pN-3Nx"/>
+                            <constraint firstItem="3as-Xz-Zmv" firstAttribute="top" secondItem="6Zn-Uh-w39" secondAttribute="bottom" constant="8" symbolic="YES" id="SEj-KS-Hli"/>
+                            <constraint firstItem="dbt-v1-HNa" firstAttribute="top" secondItem="px8-il-s53" secondAttribute="top" id="Tce-BF-06c"/>
+                            <constraint firstItem="l1B-D8-9zV" firstAttribute="top" secondItem="px8-il-s53" secondAttribute="top" id="TuF-aU-vXl"/>
+                            <constraint firstItem="6Zn-Uh-w39" firstAttribute="leading" secondItem="px8-il-s53" secondAttribute="leading" constant="8" id="bhN-T4-5cr"/>
+                            <constraint firstAttribute="trailing" secondItem="dbt-v1-HNa" secondAttribute="trailing" id="hcp-zm-QPS"/>
+                            <constraint firstAttribute="bottom" secondItem="l1B-D8-9zV" secondAttribute="bottom" id="n5g-vS-SrQ"/>
+                            <constraint firstItem="6Zn-Uh-w39" firstAttribute="top" secondItem="px8-il-s53" secondAttribute="top" constant="12" id="u6o-Kk-rdW"/>
+                            <constraint firstItem="dbt-v1-HNa" firstAttribute="leading" secondItem="px8-il-s53" secondAttribute="leading" id="uRM-r7-dYz"/>
+                            <constraint firstItem="l1B-D8-9zV" firstAttribute="leading" secondItem="px8-il-s53" secondAttribute="leading" id="xkd-8g-8sx"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="dKl-qm-sLa"/>
+            <constraints>
+                <constraint firstItem="px8-il-s53" firstAttribute="top" secondItem="4vk-wa-hIJ" secondAttribute="top" id="7Al-YN-YX3"/>
+                <constraint firstAttribute="bottom" secondItem="px8-il-s53" secondAttribute="bottom" id="B9Q-dB-lvA"/>
+                <constraint firstAttribute="trailing" secondItem="px8-il-s53" secondAttribute="trailing" id="Hna-Cn-zHI"/>
+                <constraint firstItem="px8-il-s53" firstAttribute="leading" secondItem="4vk-wa-hIJ" secondAttribute="leading" id="VGP-3O-qwN"/>
+            </constraints>
+            <size key="customSize" width="172" height="105"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="friendProfilePicImageView" destination="l1B-D8-9zV" id="7Oz-li-skz"/>
+                <outlet property="mainViewContainer" destination="px8-il-s53" id="IL5-F9-aho"/>
+            </connections>
+            <point key="canvasLocation" x="-429.71014492753625" y="-27.120535714285712"/>
+        </collectionViewCell>
+    </objects>
+</document>
