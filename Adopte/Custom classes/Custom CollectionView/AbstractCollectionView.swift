@@ -165,6 +165,10 @@ extension AbstractCollectionView: UICollectionViewDelegateFlowLayout {
         return widthPerItem
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+           return UIEdgeInsets(top: 25, left: 15, bottom: 0, right: 5)
+        }
+    
 
     
 

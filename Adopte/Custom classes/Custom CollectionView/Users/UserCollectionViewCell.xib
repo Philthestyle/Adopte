@@ -24,14 +24,20 @@
                                 <rect key="frame" x="0.0" y="0.0" width="172" height="268"/>
                             </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bkb-4Z-NWa" customClass="Gradient" customModule="Adopte" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="172" height="268"/>
+                                <rect key="frame" x="0.0" y="0.0" width="172" height="79"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="79" id="tBK-JZ-fvD"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="startColor">
                                         <color key="value" red="0.117532524" green="0.123891318" blue="0.2427005069" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="middleColor">
-                                        <color key="value" red="0.078431372550000003" green="0.1764705882" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.078431372550000003" green="0.1764705882" blue="0.31764705879999999" alpha="0.31620571607754228" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                        <color key="value" red="0.078431372550000003" green="0.1764705882" blue="0.31764705879999999" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -73,7 +79,6 @@
                             <constraint firstItem="bkb-4Z-NWa" firstAttribute="leading" secondItem="px8-il-s53" secondAttribute="leading" id="Vnf-bm-3DL"/>
                             <constraint firstItem="6Zn-Uh-w39" firstAttribute="leading" secondItem="px8-il-s53" secondAttribute="leading" constant="8" id="bhN-T4-5cr"/>
                             <constraint firstAttribute="trailing" secondItem="dbt-v1-HNa" secondAttribute="trailing" id="hcp-zm-QPS"/>
-                            <constraint firstAttribute="bottom" secondItem="bkb-4Z-NWa" secondAttribute="bottom" id="jjh-j9-XDD"/>
                             <constraint firstAttribute="bottom" secondItem="l1B-D8-9zV" secondAttribute="bottom" id="n5g-vS-SrQ"/>
                             <constraint firstItem="6Zn-Uh-w39" firstAttribute="top" secondItem="px8-il-s53" secondAttribute="top" constant="12" id="u6o-Kk-rdW"/>
                             <constraint firstItem="dbt-v1-HNa" firstAttribute="leading" secondItem="px8-il-s53" secondAttribute="leading" id="uRM-r7-dYz"/>
