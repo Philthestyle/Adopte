@@ -67,7 +67,7 @@ extension HomeVC {
         // init collectionView params
         self.usersCollectionView.data = nil
         self.usersCollectionView.abstractCellDelegate = self
-        self.usersCollectionView.computeItemsPerRow   = { return 2 }
+//        self.usersCollectionView.computeItemsPerRow   = { return 2 }
         self.usersCollectionView.data = self.usersCells
         self.usersCollectionView.performBatchUpdates(nil, completion : {
             (result) in

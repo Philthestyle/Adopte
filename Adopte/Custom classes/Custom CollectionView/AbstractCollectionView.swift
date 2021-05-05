@@ -124,62 +124,27 @@ extension AbstractCollectionView : UICollectionViewDelegate, UICollectionViewDat
 extension AbstractCollectionView: UICollectionViewDelegateFlowLayout {
     // MARK: - UICollectionViewDelegateFlowLayout
     
-    func _itemsPerRow() -> CGFloat {
-        
-        if computeItemsPerRow != nil {
-            return CGFloat(computeItemsPerRow!())
-        }
-        
-        // need to adapt if you have an iPad or iPhone and for different orientation
-        var num: CGFloat = 1
-        let isIPhone = (UIDevice.current.userInterfaceIdiom == .phone)
-        let screenBounds = UIScreen.main.bounds
-        if isIPhone {
-            
-            num = screenBounds.width > screenBounds.height ? 2 : 1
-        } else {
-            
-            num = screenBounds.width > screenBounds.height ? 4 : 3
-        }
-        return num
-    }
-    
-    
+   
     
     private func _defaultSectionInsets() -> UIEdgeInsets {
-        if self.restorationIdentifier == "homeUsersCollectionView" {
-            return UIEdgeInsets(top: 0.0, left: 10.0, bottom: 0.0, right: 0.0)
-        }
+
         return UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
     }
     
-    
-    private func _collectionViewCellWidth(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> CGFloat {
-        let minPaddingSpace = self.collectionView(collectionView, layout: collectionViewLayout, minimumLineSpacingForSectionAt: section)
-        let itemsPerRow = _itemsPerRow()
-        let paddingSpace = minPaddingSpace * (itemsPerRow)
-        let availableWidth = collectionView.frame.size.width
-        let widthPerItem = availableWidth / itemsPerRow
-        
-
-        return widthPerItem
-    }
+ 
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-           return UIEdgeInsets(top: 25, left: 15, bottom: 0, right: 5)
+           return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
     
 
     
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let widthPerItem = _collectionViewCellWidth(collectionView, layout: collectionViewLayout, insetForSectionAt: indexPath.section)
-        let height = (UIDevice.current.userInterfaceIdiom == .pad) ? widthPerItem * 1 : widthPerItem * 1
         guard let currentData = data?[indexPath.row] else {
-            return CGSize(width: widthPerItem, height: height)
+            return CGSize(width: (UIScreen.main.bounds.width / 2), height: (UIScreen.main.bounds.width / 2))
         }
-        return CGSize(width: widthPerItem, height: CGFloat(currentData.type.getHeightForCell()))
+        return CGSize(width: (UIScreen.main.bounds.width / 2), height: CGFloat(currentData.type.getHeightForCell()))
     }
     
     
