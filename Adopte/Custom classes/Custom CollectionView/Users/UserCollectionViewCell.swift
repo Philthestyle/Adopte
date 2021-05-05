@@ -30,6 +30,7 @@ class UserCollectionViewCell: UICollectionViewCell, CollectionableCell {
     @IBOutlet weak var usernameLabel: PaddingLabel!
     @IBOutlet weak var cityLabel: PaddingLabel!
     @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var showGithubButton: UIButton!
     
     
     //MARK: - Delegates
@@ -64,6 +65,11 @@ class UserCollectionViewCell: UICollectionViewCell, CollectionableCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.showGithubButton.clipsToBounds = true
+        self.showGithubButton.layer.cornerRadius = 5
+        self.showGithubButton.layer.borderWidth = 1
+        self.showGithubButton.layer.borderColor = UIColor.white.cgColor
         
         self.usernameLabel.isHidden   = true
         self.cityLabel.isHidden       = true

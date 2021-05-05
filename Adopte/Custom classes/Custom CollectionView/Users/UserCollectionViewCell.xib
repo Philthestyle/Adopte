@@ -126,6 +126,7 @@
             <connections>
                 <outlet property="avatarImageView" destination="l1B-D8-9zV" id="gLy-fg-0us"/>
                 <outlet property="cityLabel" destination="3as-Xz-Zmv" id="xtW-Ul-VEw"/>
+                <outlet property="showGithubButton" destination="VDI-wE-f2t" id="Ppg-22-pWw"/>
                 <outlet property="usernameLabel" destination="6Zn-Uh-w39" id="4fs-ZH-rJd"/>
             </connections>
             <point key="canvasLocation" x="-36.231884057971016" y="5.3571428571428568"/>
