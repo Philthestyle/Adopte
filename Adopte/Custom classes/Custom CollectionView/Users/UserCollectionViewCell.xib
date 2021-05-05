@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -53,8 +54,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbt-v1-HNa">
-                                <rect key="frame" x="0.0" y="0.0" width="172" height="268"/>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbt-v1-HNa">
+                                <rect key="frame" x="3" y="9" width="172" height="268"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="NO"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
@@ -66,6 +67,27 @@
                                     <action selector="showUserProfileVC:" destination="4vk-wa-hIJ" eventType="touchUpInside" id="XR7-P7-4YM"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDI-wE-f2t">
+                                <rect key="frame" x="90" y="223" width="74" height="37"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="74" id="NuB-Ve-eMC"/>
+                                    <constraint firstAttribute="height" constant="37" id="drF-Bh-oMz"/>
+                                </constraints>
+                                <state key="normal" title="Github">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="showUserProfileIntoWebView:" destination="4vk-wa-hIJ" eventType="touchUpInside" id="W0a-UY-pRr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -73,10 +95,12 @@
                             <constraint firstItem="bkb-4Z-NWa" firstAttribute="top" secondItem="px8-il-s53" secondAttribute="top" id="54o-Oh-7fL"/>
                             <constraint firstAttribute="bottom" secondItem="dbt-v1-HNa" secondAttribute="bottom" id="9lI-sE-0aw"/>
                             <constraint firstItem="3as-Xz-Zmv" firstAttribute="leading" secondItem="6Zn-Uh-w39" secondAttribute="leading" constant="1" id="FOe-pN-3Nx"/>
+                            <constraint firstAttribute="bottom" secondItem="VDI-wE-f2t" secondAttribute="bottom" constant="8" id="QxH-Vc-OXN"/>
                             <constraint firstItem="3as-Xz-Zmv" firstAttribute="top" secondItem="6Zn-Uh-w39" secondAttribute="bottom" constant="8" symbolic="YES" id="SEj-KS-Hli"/>
                             <constraint firstItem="dbt-v1-HNa" firstAttribute="top" secondItem="px8-il-s53" secondAttribute="top" id="Tce-BF-06c"/>
                             <constraint firstItem="l1B-D8-9zV" firstAttribute="top" secondItem="px8-il-s53" secondAttribute="top" id="TuF-aU-vXl"/>
                             <constraint firstItem="bkb-4Z-NWa" firstAttribute="leading" secondItem="px8-il-s53" secondAttribute="leading" id="Vnf-bm-3DL"/>
+                            <constraint firstAttribute="trailing" secondItem="VDI-wE-f2t" secondAttribute="trailing" constant="8" id="abP-c2-cTf"/>
                             <constraint firstItem="6Zn-Uh-w39" firstAttribute="leading" secondItem="px8-il-s53" secondAttribute="leading" constant="8" id="bhN-T4-5cr"/>
                             <constraint firstAttribute="trailing" secondItem="dbt-v1-HNa" secondAttribute="trailing" id="hcp-zm-QPS"/>
                             <constraint firstAttribute="bottom" secondItem="l1B-D8-9zV" secondAttribute="bottom" id="n5g-vS-SrQ"/>
@@ -107,4 +131,9 @@
             <point key="canvasLocation" x="-36.231884057971016" y="5.3571428571428568"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

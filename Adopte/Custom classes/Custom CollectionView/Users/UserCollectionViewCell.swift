@@ -34,10 +34,33 @@ class UserCollectionViewCell: UICollectionViewCell, CollectionableCell {
     
     //MARK: - Delegates
     func showUserDetailsVC(informationType: String) {
-        if let del = self.collectionableDelegate {
-            del.showCellDetailsVC(userLogin: self.currentUser?.login ?? "login is missing for 'self.currentUser'")
+        
+        switch informationType {
+        case "userProfileWebViewVC":
+            if let del = self.collectionableDelegate {
+                del.showCellDetailsVC(userLogin: self.currentUser?.login ?? "login is missing for 'self.currentUser'", screenIdentifier: "userProfileWebViewVC")
+            }
+        case "userDetailsProfileVC":
+            if let del = self.collectionableDelegate {
+                del.showCellDetailsVC(userLogin: self.currentUser?.login ?? "login is missing for 'self.currentUser'", screenIdentifier: "userDetailsProfileVC")
+            }
+        default:
+            return
         }
+        
     }
+    
+
+    @IBAction func showUserProfileVC(_ sender: Any) {
+        Constants.currentSelectedUser = self.currentUser ?? User()
+        self.showUserDetailsVC(informationType: "userDetailsProfileVC")
+    }
+    
+    @IBAction func showUserProfileIntoWebView(_ sender: Any) {
+        Constants.currentSelectedUser = self.currentUser ?? User()
+        self.showUserDetailsVC(informationType: "userProfileWebViewVC")
+    }
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -46,16 +69,6 @@ class UserCollectionViewCell: UICollectionViewCell, CollectionableCell {
         self.cityLabel.isHidden       = true
         self.avatarImageView.isHidden = true
     }
-    
-  
-    @IBAction func showUserProfileVC(_ sender: Any) {
-        
-        
-        Constants.currentSelectedUser = self.currentUser ?? User()
-        self.showUserDetailsVC(informationType: "userDetailsProfileVC")
-    }
-    
-    
     
     // MARK: - Public methods
     override func prepareForReuse() {

@@ -13,6 +13,7 @@ enum Navigation {
 	case lost
 	
     case homeVC
+    case userProfileWebViewVC
     case userDetailsProfileVC
 }
 
@@ -24,6 +25,7 @@ extension Navigation: RawRepresentable {
         switch rawValue.name {
         
         case "homeVC"               : self = .homeVC
+        case "userProfileWebViewVC" : self = .userProfileWebViewVC
         case "userDetailsProfileVC" : self = .userDetailsProfileVC
             
         case "404": self = .lost
@@ -35,13 +37,20 @@ extension Navigation: RawRepresentable {
     // MARK: RAW VALUE
     var rawValue: RawValue {
         switch self {
-     
+        
         
         case .homeVC:
             return StoryboardInfo(
                 name: "HomeVC",
                 storyboardID: "HomeVC",
                 type: HomeVC.self,
+                bundleName: "Main")
+            
+        case .userProfileWebViewVC:
+            return StoryboardInfo(
+                name: "UserProfileWebViewVC",
+                storyboardID: "UserProfileWebViewVC",
+                type: UserProfileWebViewVC.self,
                 bundleName: "Main")
         
         case .userDetailsProfileVC:

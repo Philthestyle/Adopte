@@ -58,14 +58,25 @@ protocol CollectionableCell {
 
 
 protocol AbstractCellDelegate: class {
-    func showCellDetailsVC(userLogin: String?)
+    func showCellDetailsVC(userLogin: String?, screenIdentifier: String)
 }
 
 class AbstractCollectionView: UICollectionView, AbstractCellDelegate {
-    func showCellDetailsVC(userLogin: String?) {
-        if let del = self.abstractCellDelegate {
-            del.showUserDetailsVC(login: userLogin)
+    func showCellDetailsVC(userLogin: String?, screenIdentifier: String) {
+        
+        switch screenIdentifier {
+        case "userProfileWebViewVC":
+            if let del = self.abstractCellDelegate {
+                del.showUserDetailsVC(login: userLogin, screenIdentifier: "userProfileWebViewVC")
+            }
+        case "userDetailsProfileVC":
+            if let del = self.abstractCellDelegate {
+                del.showUserDetailsVC(login: userLogin, screenIdentifier: "userDetailsProfileVC")
+            }
+        default:
+            return
         }
+        
     }
     
 
@@ -92,7 +103,7 @@ class AbstractCollectionView: UICollectionView, AbstractCellDelegate {
 }
 
 protocol AbstractCollectionViewDelegate: class {
-    func showUserDetailsVC(login: String?)
+    func showUserDetailsVC(login: String?, screenIdentifier: String)
 }
 
 

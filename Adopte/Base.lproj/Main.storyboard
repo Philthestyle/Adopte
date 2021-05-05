@@ -86,6 +86,48 @@
             </objects>
             <point key="canvasLocation" x="1011.5942028985507" y="124.55357142857142"/>
         </scene>
+        <!--UserProfileWebViewVC-->
+        <scene sceneID="KQt-5x-LdJ">
+            <objects>
+                <viewController storyboardIdentifier="UserProfileWebViewVC" title="UserProfileWebViewVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qtZ-lu-F0A" customClass="UserProfileWebViewVC" customModule="Adopte" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="sBP-KJ-lPA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SZj-nP-KaT">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <webView clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vi0-OA-au7">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </webView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="vi0-OA-au7" firstAttribute="top" secondItem="SZj-nP-KaT" secondAttribute="top" id="D2H-GQ-VRn"/>
+                                    <constraint firstAttribute="bottom" secondItem="vi0-OA-au7" secondAttribute="bottom" id="Esf-kg-Wa2"/>
+                                    <constraint firstItem="vi0-OA-au7" firstAttribute="leading" secondItem="SZj-nP-KaT" secondAttribute="leading" id="MNc-QY-MTc"/>
+                                    <constraint firstAttribute="trailing" secondItem="vi0-OA-au7" secondAttribute="trailing" id="nQn-xa-hnf"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="UXm-93-U3i"/>
+                        <color key="backgroundColor" red="0.1563185453" green="0.200453192" blue="0.24037107830000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="SZj-nP-KaT" firstAttribute="leading" secondItem="UXm-93-U3i" secondAttribute="leading" id="AFp-51-Qbs"/>
+                            <constraint firstItem="SZj-nP-KaT" firstAttribute="top" secondItem="UXm-93-U3i" secondAttribute="top" id="KEQ-zD-Xfi"/>
+                            <constraint firstItem="UXm-93-U3i" firstAttribute="bottom" secondItem="SZj-nP-KaT" secondAttribute="bottom" id="Oj9-B7-tTI"/>
+                            <constraint firstItem="UXm-93-U3i" firstAttribute="trailing" secondItem="SZj-nP-KaT" secondAttribute="trailing" id="t9r-Gk-DOc"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="wkwebview" destination="vi0-OA-au7" id="vYu-pC-ebS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UEE-9k-vVk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1758" y="125"/>
+        </scene>
         <!--UserDetailsProfileVC-->
         <scene sceneID="b0I-q7-Rho">
             <objects>
@@ -164,7 +206,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HjR-Bc-lkB" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2085.507246376812" y="124.55357142857142"/>
+            <point key="canvasLocation" x="2577" y="140"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="lLX-CF-Acb">

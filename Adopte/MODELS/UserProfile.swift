@@ -16,6 +16,7 @@ class UserProfile: Codable, Serializable {
         case followers
         case company
         case location
+        case html_url
     }
     
     
@@ -28,7 +29,9 @@ class UserProfile: Codable, Serializable {
     var followers  : Int    = 0
     var company    : String = "Company"
     var location   : String = "San Francisco"
-   
+    var html_url: String = "html_url"
+    
+    
     // MARK: - INIT AUTO
     init() {
         self.id         = 00000000
@@ -38,13 +41,14 @@ class UserProfile: Codable, Serializable {
         self.followers  = 0
         self.company    = "Company"
         self.location   = "San Francisco"
+        self.html_url   = "html_url"
     }
     
     // MARK: - INIT WITH PARAMS
     init(id: Int,
          avatar_url: String,
          login: String,
-         url: String, followers: Int, company: String, location: String) {
+         url: String, followers: Int, company: String, location: String, html_url: String) {
         
         self.id          = id
         self.avatar_url  = avatar_url
@@ -53,6 +57,7 @@ class UserProfile: Codable, Serializable {
         self.followers  = followers
         self.company    = company
         self.location   = location
+        self.html_url   = html_url
     }
     
     // MARK: - DECODER
@@ -68,6 +73,7 @@ class UserProfile: Codable, Serializable {
             self.followers  = try values.decodeIfPresent(Int.self, forKey: .followers) ?? 0
             self.company    = try values.decodeIfPresent(String.self, forKey: .company) ?? "company missing"
             self.location   = try values.decodeIfPresent(String.self, forKey: .location) ?? "location missing"
+            self.html_url   = try values.decodeIfPresent(String.self, forKey: .html_url) ?? "html_url missing"
        
         } catch let error {
             let className = "UserProfile"
@@ -89,6 +95,7 @@ class UserProfile: Codable, Serializable {
             try container.encodeIfPresent(followers, forKey: .followers)
             try container.encodeIfPresent(company, forKey: .company)
             try container.encodeIfPresent(location, forKey: .location)
+            try container.encodeIfPresent(html_url, forKey: .html_url)
             
         } catch let error {
             fatalError("Error! When you want to encode your model: \(type(of: self)) > \(self) :: \(error)")

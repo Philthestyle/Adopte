@@ -9,8 +9,16 @@ import UIKit
 
 class HomeVC: UIViewController, AbstractCollectionViewDelegate {
     // delegates method
-    func showUserDetailsVC(login: String?) {
-        self.goToWithEffect(.userDetailsProfileVC, effect: .coverVertical)
+    func showUserDetailsVC(login: String?, screenIdentifier: String) {
+        switch screenIdentifier {
+        case "userProfileWebViewVC":
+            self.goToWithEffect(.userProfileWebViewVC, effect: .coverVertical)
+        case "userDetailsProfileVC":
+            self.goToWithEffect(.userDetailsProfileVC, effect: .coverVertical)
+        default:
+            return
+        }
+        
     }
     
     // refresh data management

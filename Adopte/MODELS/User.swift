@@ -23,6 +23,12 @@ class User: Codable, Serializable {
     var avatar_url: String = "username"
     var login: String = "firstName"
     var url: String = "lastName"
+    
+    
+    var html_url: String {
+        var url: String = "https://github.com/" + login
+        return url ?? ""
+    }
   
    
     // MARK: - INIT AUTO
