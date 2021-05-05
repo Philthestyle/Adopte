@@ -15,13 +15,6 @@ public class NetworkManager {
             print(users)
             DispatchQueue.main.async {
                 // Prepare data from User url profile infos
-//                var userProfiles: [UserProfile] = []
-//                for i in 0...users.count - 1 {
-//                    NetworkManager.getUserInfosFromURL_withUserLogin(login: users[i].login) { userProfileToBeAdded in
-//                        userProfiles.append(userProfileToBeAdded)
-//                    }
-//                }
-                
                 completion(users)
             }
         }

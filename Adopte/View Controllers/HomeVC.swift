@@ -8,9 +8,40 @@
 import UIKit
 
 class HomeVC: UIViewController, AbstractCollectionViewDelegate {
+    // delegates method
     func showUserDetailsVC(login: String?) {
         self.goToWithEffect(.userDetailsProfileVC, effect: .coverVertical)
     }
+    
+    // refresh data management
+    private let refreshControl = UIRefreshControl()
+    @objc
+    private func didPullToRefresh(_ sender: Any) {
+        
+        if Reachability.isConnectedToNetwork(){
+            print("Internet Connection Available!")
+            NetworkManager.getUsers { users in
+                print("Users: \(users?.description ?? "")")
+                guard users != nil else {
+                    print("Error - users list is empty")
+                    return
+                }
+                
+                self.prepareDataForCollectionView(usersList: users!, userProfiles: [])
+            }
+            refreshControl.endRefreshing()
+        } else {
+            
+            DispatchQueue.main.async {
+                self.showNoConnectionAlertView()
+               
+            }
+            self.usersCollectionView.refreshControl?.endRefreshing()
+        }
+        
+
+    }
+    
     
     //MARK: - @IBOutlets
     @IBOutlet weak var usersCollectionView: AbstractCollectionView!
@@ -24,20 +55,37 @@ class HomeVC: UIViewController, AbstractCollectionViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
+        refreshControl.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
+        self.usersCollectionView.alwaysBounceVertical = true
+        self.usersCollectionView.refreshControl = refreshControl
         
         // design init
         self.designInit()
         
         
         // Prepare data
-        NetworkManager.getUsers { users in
-            print("Users: \(users?.description ?? "")")
-            guard users != nil else {
-                print("Error - users list is empty")
+        if Reachability.isConnectedToNetwork(){
+            print("Internet Connection Available!")
+            NetworkManager.getUsers { users in
+                print("Users: \(users?.description ?? "")")
+                guard users != nil else {
+                    print("Error - users list is empty")
                     return
+                }
+                
+                self.prepareDataForCollectionView(usersList: users!, userProfiles: [])
             }
+            refreshControl.endRefreshing()
+        } else {
+            print("Internet Connection not Available!")
             
-            self.prepareDataForCollectionView(usersList: users!, userProfiles: [])
+           
+            DispatchQueue.main.async {
+                self.showNoConnectionAlertView()
+                
+            }
+            self.usersCollectionView.refreshControl?.endRefreshing()
+            
         }
         
         
@@ -109,4 +157,16 @@ extension HomeVC {
     }
     
    
+}
+
+
+extension HomeVC {
+    // if user is not connected to the internet
+    private func showNoConnectionAlertView() {
+        let alert = UIAlertController(title: "Aucun réseau", message: "Vous n'êtes pas connecté à Internet - vérifier votre réseau pour recharger", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.cancel, handler: {(action: UIAlertAction) in
+        }))
+        alert.view.tintColor = UIColor.black
+        self.present(alert, animated: true, completion: nil)
+    }
 }

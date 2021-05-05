@@ -28,7 +28,7 @@ class UserDetailsProfileVC: UIViewController {
             
             self.designInit(userProfileToBeUsed: userProfileFromNetwork)
             
-            self.userIDLabel.text = "\(userProfileFromNetwork.login ?? "login missing")"
+            self.userIDLabel.text = "ID \(userProfileFromNetwork.id ?? 00000000)"
             self.userProfileImageView.downloaded(from: "\(userProfileFromNetwork.avatar_url ?? "avatar url missing")")
         }
         
