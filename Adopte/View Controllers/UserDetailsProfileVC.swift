@@ -18,9 +18,7 @@ class UserDetailsProfileVC: UIViewController {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var html_urlLabel: UILabel!
     
-    
-    
-    
+
     // Variables
     var currentUserProfile: UserProfile?
     

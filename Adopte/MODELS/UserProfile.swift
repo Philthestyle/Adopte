@@ -68,12 +68,12 @@ class UserProfile: Codable, Serializable {
             
             self.id         = try values.decodeIfPresent(Int.self, forKey: .id) ?? 0000000
             self.avatar_url = try values.decodeIfPresent(String.self, forKey: .avatar_url) ?? "avatar_url missing"
-            self.login      = try values.decodeIfPresent(String.self, forKey: .login) ?? "login missing"
-            self.url        = try values.decodeIfPresent(String.self, forKey: .url) ?? "url missing"
+            self.login      = try values.decodeIfPresent(String.self, forKey: .login) ?? "-"
+            self.url        = try values.decodeIfPresent(String.self, forKey: .url) ?? "-"
             self.followers  = try values.decodeIfPresent(Int.self, forKey: .followers) ?? 0
-            self.company    = try values.decodeIfPresent(String.self, forKey: .company) ?? "company missing"
-            self.location   = try values.decodeIfPresent(String.self, forKey: .location) ?? "location missing"
-            self.html_url   = try values.decodeIfPresent(String.self, forKey: .html_url) ?? "html_url missing"
+            self.company    = try values.decodeIfPresent(String.self, forKey: .company) ?? "-"
+            self.location   = try values.decodeIfPresent(String.self, forKey: .location) ?? "-"
+            self.html_url   = try values.decodeIfPresent(String.self, forKey: .html_url) ?? "-"
        
         } catch let error {
             let className = "UserProfile"
