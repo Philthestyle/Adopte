@@ -14,33 +14,34 @@ public class NetworkManager {
             let users = try! JSONDecoder().decode([User].self, from: data!)
             print(users)
             DispatchQueue.main.async {
+                // Prepare data from User url profile infos
+//                var userProfiles: [UserProfile] = []
+//                for i in 0...users.count - 1 {
+//                    NetworkManager.getUserInfosFromURL_withUserLogin(login: users[i].login) { userProfileToBeAdded in
+//                        userProfiles.append(userProfileToBeAdded)
+//                    }
+//                }
+                
                 completion(users)
             }
         }
         .resume()
     }
     
-    static func getUserInfosFromURL_withUserLogin(login: String, completion:@escaping (User) -> ()) {
+    static func getUserProfileFromURL_withUserLogin(login: String, completion:@escaping (UserProfile) -> ()) {
+        
+        
         guard let url = URL(string: "https://api.github.com/users/" + login) else { return }
+        
+        
         URLSession.shared.dataTask(with: url) { (data, _, _) in
-            let users = try! JSONDecoder().decode(User.self, from: data!)
-            print(users)
+            let userProfile = try! JSONDecoder().decode(UserProfile.self, from: data!)
+            print(userProfile)
             DispatchQueue.main.async {
-                completion(users)
+                completion(userProfile)
             }
         }
         .resume()
     }
     
-    static func getUserFollowersFromURL_withUserLogin(login: String, completion:@escaping (User) -> ()) {
-        guard let url = URL(string: "https://api.github.com/users/" + login) else { return }
-        URLSession.shared.dataTask(with: url) { (data, _, _) in
-            let users = try! JSONDecoder().decode([User].self, from: data!)
-            print(users)
-            DispatchQueue.main.async {
-                completion(users)
-            }
-        }
-        .resume()
-    }
 }

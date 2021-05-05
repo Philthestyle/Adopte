@@ -356,26 +356,6 @@ extension UIImage {
 
 
 
-// MARK: - UNIT SPEED
-extension UnitSpeed {
-    class var secondsPerMeter: UnitSpeed {
-        return UnitSpeed(symbol: "sec/m", converter: UnitConverterPace(coefficient: 1))
-    }
-    class var minutesPerKilometer: UnitSpeed {
-        return UnitSpeed(symbol: "min/km", converter: UnitConverterPace(coefficient: 60.0 / 1000.0))
-    }
-    class var minutesPerMile: UnitSpeed {
-        return UnitSpeed(symbol: "min/mi", converter: UnitConverterPace(coefficient: 60.0 / 1609.34))
-    }
-}
-
-
-// MARK: - DOUBLE
-
-
-
-
-
 
 
 
@@ -683,16 +663,6 @@ extension CAShapeLayer {
     }
 }
 
-extension UIButton {
-    func addBadge(badgeValue: String) {
-        let notificationButton = SSBadgeButton()
-        notificationButton.frame = CGRect(x: self.frame.width/2 - 22, y: self.frame.height/2 - 22, width: 44, height: 44)
-        notificationButton.setImage(UIImage(named: "Notification")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        notificationButton.badgeEdgeInsets = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 15)
-        notificationButton.badge = badgeValue
-        self.addSubview(notificationButton)
-    }
-}
 
 
 extension UIDevice {

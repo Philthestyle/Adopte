@@ -35,7 +35,7 @@ enum CellType : String, CaseIterable {
         switch self {
       
         case .userCollectionViewCell:
-            return 138
+            return 250
             
 
         default:
@@ -58,18 +58,17 @@ protocol CollectionableCell {
 
 
 protocol AbstractCellDelegate: class {
-    func showCellDetailsVC(userID: String?)
+    func showCellDetailsVC(userLogin: String?)
 }
 
 class AbstractCollectionView: UICollectionView, AbstractCellDelegate {
-    func showCellDetailsVC(userID: String?) {
-        print("Type: \(cellType)")
+    func showCellDetailsVC(userLogin: String?) {
         if let del = self.abstractCellDelegate {
-            del.showUserDetailsVC(userID: String?)
+            del.showUserDetailsVC(login: userLogin)
         }
     }
     
-   
+
     
     var shouldAnimate: Bool = true
     
@@ -93,7 +92,7 @@ class AbstractCollectionView: UICollectionView, AbstractCellDelegate {
 }
 
 protocol AbstractCollectionViewDelegate: class {
-    func showUserDetailsVC(cellType: CellType, infoType: String, stringValue: String, workoutID: String?, runningID: String?)
+    func showUserDetailsVC(login: String?)
 }
 
 
@@ -102,8 +101,6 @@ extension AbstractCollectionView : UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data?.count ?? 0
     }
-    
-
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             guard let currentData = data?[indexPath.row] else {
@@ -119,9 +116,6 @@ extension AbstractCollectionView : UICollectionViewDelegate, UICollectionViewDat
                 
                 return cell
             }
-            
-            
-            
             return collectionView.dequeueReusableCell(withReuseIdentifier: CellType.default.rawValue, for: indexPath)
         }
     
@@ -131,16 +125,20 @@ extension AbstractCollectionView: UICollectionViewDelegateFlowLayout {
     // MARK: - UICollectionViewDelegateFlowLayout
     
     func _itemsPerRow() -> CGFloat {
+        
         if computeItemsPerRow != nil {
             return CGFloat(computeItemsPerRow!())
         }
+        
         // need to adapt if you have an iPad or iPhone and for different orientation
         var num: CGFloat = 1
         let isIPhone = (UIDevice.current.userInterfaceIdiom == .phone)
         let screenBounds = UIScreen.main.bounds
         if isIPhone {
+            
             num = screenBounds.width > screenBounds.height ? 2 : 1
         } else {
+            
             num = screenBounds.width > screenBounds.height ? 4 : 3
         }
         return num
@@ -150,15 +148,17 @@ extension AbstractCollectionView: UICollectionViewDelegateFlowLayout {
     
     private func _defaultSectionInsets() -> UIEdgeInsets {
         if self.restorationIdentifier == "homeUsersCollectionView" {
-            return UIEdgeInsets(top: 20.0, left: 0.0, bottom: 35.0, right: 0.0)
+            return UIEdgeInsets(top: 0.0, left: 10.0, bottom: 0.0, right: 0.0)
         }
         return UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
     }
+    
+    
     private func _collectionViewCellWidth(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> CGFloat {
         let minPaddingSpace = self.collectionView(collectionView, layout: collectionViewLayout, minimumLineSpacingForSectionAt: section)
         let itemsPerRow = _itemsPerRow()
-        let paddingSpace = minPaddingSpace * (itemsPerRow + 1)
-        let availableWidth = collectionView.frame.size.width - paddingSpace
+        let paddingSpace = minPaddingSpace * (itemsPerRow)
+        let availableWidth = collectionView.frame.size.width
         let widthPerItem = availableWidth / itemsPerRow
         
 
@@ -170,12 +170,8 @@ extension AbstractCollectionView: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        if self.restorationIdentifier == "HomeUsersCollectionView" {
-            return CGSize(width: CGFloat(110), height: CGFloat(140))
-        }
-        
         let widthPerItem = _collectionViewCellWidth(collectionView, layout: collectionViewLayout, insetForSectionAt: indexPath.section)
-        let height = (UIDevice.current.userInterfaceIdiom == .pad) ? widthPerItem * 1.1 : widthPerItem * 1.2
+        let height = (UIDevice.current.userInterfaceIdiom == .pad) ? widthPerItem * 1 : widthPerItem * 1
         guard let currentData = data?[indexPath.row] else {
             return CGSize(width: widthPerItem, height: height)
         }
@@ -184,12 +180,9 @@ extension AbstractCollectionView: UICollectionViewDelegateFlowLayout {
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return _defaultSectionInsets().left
+        return CGFloat(0)
     }
     
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: 0, height: 0)
-    }
 }
 

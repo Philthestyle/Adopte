@@ -12,6 +12,7 @@ import UIKit
 enum Navigation {
 	case lost
 	
+    case homeVC
     case userDetailsProfileVC
 }
 
@@ -22,6 +23,7 @@ extension Navigation: RawRepresentable {
     init(rawValue: RawValue) {
         switch rawValue.name {
         
+        case "homeVC"               : self = .homeVC
         case "userDetailsProfileVC" : self = .userDetailsProfileVC
             
         case "404": self = .lost
@@ -34,6 +36,14 @@ extension Navigation: RawRepresentable {
     var rawValue: RawValue {
         switch self {
      
+        
+        case .homeVC:
+            return StoryboardInfo(
+                name: "HomeVC",
+                storyboardID: "HomeVC",
+                type: HomeVC.self,
+                bundleName: "Main")
+        
         case .userDetailsProfileVC:
             return StoryboardInfo(
                 name: "UserDetailsProfileVC",

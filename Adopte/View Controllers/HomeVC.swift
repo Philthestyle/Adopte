@@ -8,7 +8,7 @@
 import UIKit
 
 class HomeVC: UIViewController, AbstractCollectionViewDelegate {
-    func showUserDetailsVC(cellType: CellType, infoType: String, stringValue: String, workoutID: String?, runningID: String?) {
+    func showUserDetailsVC(login: String?) {
         self.goToWithEffect(.userDetailsProfileVC, effect: .coverVertical)
     }
     
@@ -32,9 +32,11 @@ class HomeVC: UIViewController, AbstractCollectionViewDelegate {
                     return
             }
             
-            self.prepareDataForCollectionView(usersList: users!)
+            self.prepareDataForCollectionView(usersList: users!, userProfiles: [])
         }
         
+        
+       
         
         
     }
@@ -49,21 +51,23 @@ class HomeVC: UIViewController, AbstractCollectionViewDelegate {
 
 
 extension HomeVC {
-    private func prepareDataForCollectionView(usersList: [User]) {
-        // init collectionView params
-        self.usersCollectionView.data = nil
-        self.usersCollectionView.abstractCellDelegate = self
-        self.usersCollectionView.computeItemsPerRow   = { return 6 }
+    private func prepareDataForCollectionView(usersList: [User], userProfiles: [UserProfile]) {
+       
         
         // reset 'self.usersCells'
         self.usersCells.removeAll()
         
         for i in 0...usersList.count - 1 {
             let userForCell: User = usersList[i]
-            let userCell: Collectionable = CellPresentation(type: .userCollectionViewCell, cellData: UserCard(user: userForCell))
+//            let userProfileForCell: UserProfile = userProfiles[i]
+            let userCell: Collectionable = CellPresentation(type: .userCollectionViewCell, cellData: UserCard(user: userForCell, userProfile: UserProfile()))
             self.usersCells.append(userCell)
         }
 
+        // init collectionView params
+        self.usersCollectionView.data = nil
+        self.usersCollectionView.abstractCellDelegate = self
+        self.usersCollectionView.computeItemsPerRow   = { return 2.09 }
         self.usersCollectionView.data = self.usersCells
         self.usersCollectionView.performBatchUpdates(nil, completion : {
             (result) in
