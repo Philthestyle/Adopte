@@ -15,6 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        self.tabBarDesignInit()
+        
         return true
     }
 
@@ -79,3 +82,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate {
+    //MARK:- Private methods
+    private func tabBarDesignInit() {
+        UITabBar.appearance().backgroundColor = #colorLiteral(red: 0.1563185453, green: 0.200453192, blue: 0.2403710783, alpha: 1)
+        UITabBar.appearance().backgroundImage = UIImage()
+        UITabBar.appearance().shadowImage = UIImage.colorForNavBar(color: #colorLiteral(red: 0.1563185453, green: 0.200453192, blue: 0.2403710783, alpha: 1))
+        UITabBar.appearance().tintColor = UIColor.white
+    }
+}

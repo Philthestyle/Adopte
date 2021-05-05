@@ -24,6 +24,11 @@ class HomeVC: UIViewController, AbstractCollectionViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
+        
+        // design init
+        self.designInit()
+        
+        
         // Prepare data
         NetworkManager.getUsers { users in
             print("Users: \(users?.description ?? "")")
@@ -87,17 +92,20 @@ extension HomeVC {
     private func designInit() {
         // navigationBar design
         self.navigationItem.largeTitleDisplayMode = .never
-        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
         self.navigationController?.navigationBar.titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor : UIColor.clear,
+            NSAttributedString.Key.foregroundColor : UIColor.white,
             NSAttributedString.Key.font: UIFont(name: "AvenirNext-HeavyItalic", size: CGFloat(22))!]
-        self.navigationController?.navigationBar.tintColor = UIColor.white
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage.imageWithColor(color: UIColor.clear), for: .default)
+        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.1563185453, green: 0.200453192, blue: 0.2403710783, alpha: 1)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage.imageWithColor(color: #colorLiteral(red: 0.1563185453, green: 0.200453192, blue: 0.2403710783, alpha: 1)), for: .default)
        
         self.title = "Home"
+        
+        
+        
     }
     
    
